@@ -1,18 +1,4 @@
 /**
- * Create a player object.
- *
- * @param {string} name the name of the player.
- * @param {string} symbol should be "X" or "O".
- * @returns a player object with essential info.
- */
-function createPlayer(name, symbol) {
-  const getName = () => name || "";
-  const getSymbol = () => (symbol.match(/(X|O)/i) ? symbol.toUpperCase() : "");
-
-  return { getName, getSymbol };
-}
-
-/**
  * Instantiate a game board with 3x3 cell and provide
  * essential API to manage the game.
  *
@@ -87,6 +73,3 @@ function createGameBoard(firstPlayer, secondPlayer) {
 
   return { getWinner, fillCell };
 }
-
-const gameBoard = createGameBoard("alex", "martin");
-gameBoard;
