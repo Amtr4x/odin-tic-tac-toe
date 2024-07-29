@@ -6,11 +6,60 @@
  * @param {string} secondPlayer name of the second player.
  * @returns a gameBoard object with associated functions
  */
-function createGameBoard(firstPlayer, secondPlayer) {
+function createGameBoard() {
+  let firstPlayer = null;
+  let secondPlayer = null;
   let isFirstPlayerTurn = true;
   const gameBoard = [];
   gameBoard.length = 9;
   gameBoard.fill(null);
+
+  const getPlayersName = () => {
+    const body = document.querySelector("body");
+
+    const background = document.createElement("div");
+    background.id = "modal-background";
+    const modal = document.createElement("form");
+
+    const firstPlayerContainer = document.createElement("div");
+    firstPlayerContainer.className = "player_container";
+    const firstPlayerInput = document.createElement("input");
+    firstPlayerInput.type = "text";
+    firstPlayerInput.id = "first-player";
+    const firstPlayerLabel = document.createElement("label");
+    firstPlayerLabel.textContent = "Player X name:";
+    firstPlayerLabel.htmlFor = "first-player";
+
+    const secondPlayerContainer = document.createElement("div");
+    secondPlayerContainer.className = "player_container";
+    const secondPlayerInput = document.createElement("input");
+    secondPlayerInput.type = "text";
+    secondPlayerInput.id = "second-player";
+    const secondPlayerLabel = document.createElement("label");
+    secondPlayerLabel.textContent = "Player O name:";
+    secondPlayerLabel.htmlFor = "second-player";
+
+    const playBtn = document.createElement("button");
+    playBtn.textContent = "Play";
+
+    firstPlayerContainer.appendChild(firstPlayerLabel);
+    firstPlayerContainer.appendChild(firstPlayerInput);
+    secondPlayerContainer.appendChild(secondPlayerLabel);
+    secondPlayerContainer.appendChild(secondPlayerInput);
+    background.appendChild(firstPlayerContainer);
+    background.appendChild(secondPlayerContainer);
+    background.appendChild(playBtn);
+    body.appendChild(background);
+
+    playBtn.addEventListener("click", (btn) => {
+      btn.preventDefault();
+      if (firstPlayerInput.value && secondPlayerInput.value) {
+        firstPlayer = firstPlayerInput.value;
+        secondPlayer = secondPlayerInput.value;
+        body.removeChild(background);
+      }
+    });
+  };
 
   const fillCell = (cell) => {
     if (!gameBoard[cell]) {
@@ -70,6 +119,9 @@ function createGameBoard(firstPlayer, secondPlayer) {
       return winner || "";
     }
   };
-
-  return { getWinner, fillCell };
+  // TODO -> link file to html and test modal
+  return { getWinner, fillCell, getPlayersName };
 }
+
+const gameBoard = createGameBoard();
+gameBoard.getPlayersName();
