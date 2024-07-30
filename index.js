@@ -14,6 +14,9 @@ function createGameBoard() {
   gameBoard.length = 9;
   gameBoard.fill(null);
 
+  /**
+   * Display a modal to retrieve the name of the players.
+   */
   const getPlayersName = () => {
     const body = document.querySelector("body");
 
@@ -61,6 +64,12 @@ function createGameBoard() {
     });
   };
 
+  /**
+   * Fill a required cell in the game board, automatically
+   * manage the turns of the players
+   *
+   * @param {number} an index to identify the cell to fill.
+   */
   const fillCell = (cell) => {
     if (!gameBoard[cell]) {
       if (isFirstPlayerTurn) {
@@ -73,10 +82,19 @@ function createGameBoard() {
     }
   };
 
+  /**
+   * Query if all the cells from the gameboard are filled.
+   * @returns a bolean
+   */
   const isGameCompleted = () => {
     return gameBoard.includes(null);
   };
 
+  /**
+   * Detect when the game is drawn or a player wins according
+   * to the game logic.
+   * @returns a string containing the game result.
+   */
   const getWinner = () => {
     if (isGameCompleted) {
       return "drawn";
