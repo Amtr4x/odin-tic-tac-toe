@@ -149,7 +149,7 @@ function createDisplayManager() {
 
   const updateTurn = (isFirstPlayerTurn) => {
     const turnIndicator = document.querySelector("#turn-indicator");
-    turnIndicator.textContent = `Turn of ${isFirstPlayerTurn ? firstPlayer : secondPlayer}`;
+    turnIndicator.textContent = `Turn of ${isFirstPlayerTurn ? "X" : "O"}`;
   }
 
   /**
@@ -191,7 +191,8 @@ function createDisplayManager() {
   return { getPlayersName, updateTurn, displayFinalResult };
 }
 
+const gameBoard = createGameBoard();
 const displayManager = createDisplayManager();
 displayManager.getPlayersName();
+displayManager.updateTurn(gameBoard.isFirstPlayerTurn);
 
-const turnIndicator = document.querySelector("#turn-indicator");
