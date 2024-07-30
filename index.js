@@ -147,6 +147,10 @@ function createDisplayManager() {
     });
   };
 
+  /**
+  * Update the indicator that display which turn
+  * is.
+  */
   const updateTurn = (isFirstPlayerTurn) => {
     const turnIndicator = document.querySelector("#turn-indicator");
     turnIndicator.textContent = `Turn of ${isFirstPlayerTurn ? "X" : "O"}`;
