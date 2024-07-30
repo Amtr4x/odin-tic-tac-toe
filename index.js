@@ -147,5 +147,41 @@ function createDisplayManager() {
     });
   };
 
-  return { getPlayersName };
+  /**
+  * Display a modal with the final result of the game
+  * it should be X | O | drawn.
+  */
+  const displayFinalResult = (winnerSymbol) => {
+    const winner = null;
+
+    if (winnerSymbol === "X") {
+      winner = firstPlayer;
+    } else if (winnerSymbol === "O") {
+      winner = secondPlayer;
+    } else {
+      winner = winnerSymbol;
+    }
+
+    const body = document.querySelector("body");
+    const background = document.createElement("div");
+    const resultContainer = document.createElement("div");
+    resultContainer.id = "result-container";
+    background.id = "modal-result-background";
+    const title = document.createElement("h2");
+    title.textContent = "Final Result";
+    const result = document.createElement("p");
+    result.textContent = winner === "drawn" ? "Game is drawn! 🫣🫢" : `The winner is ${winner} 🏆🥳`;
+    const resetBtn = document.createElement("button");
+    resetBtn.textContent = "Restart Game!";
+
+    resultContainer.appendChild(title);
+    resultContainer.appendChild(result);
+    resultContainer.appendChild(resetBtn);
+    background.appendChild(resultContainer);
+    body.appendChild(background);
+
+    resetBtn.addEventListener("click", () => location.reload());
+  }
+
+  return { getPlayersName, displayFinalResult };
 }
