@@ -152,7 +152,7 @@ function createDisplayManager() {
   * it should be X | O | drawn.
   */
   const displayFinalResult = (winnerSymbol) => {
-    const winner = null;
+    let winner = null;
 
     if (winnerSymbol === "X") {
       winner = firstPlayer;
