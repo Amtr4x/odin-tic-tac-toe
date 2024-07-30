@@ -23,6 +23,8 @@ function createGameBoard() {
     const background = document.createElement("div");
     background.id = "modal-background";
     const modal = document.createElement("form");
+    const gameTitle = document.createElement("h2");
+    gameTitle.textContent = "Tic-Tac-Toe 🎮"
 
     const firstPlayerContainer = document.createElement("div");
     firstPlayerContainer.className = "player_container";
@@ -52,6 +54,7 @@ function createGameBoard() {
     modal.appendChild(firstPlayerContainer);
     modal.appendChild(secondPlayerContainer);
     modal.appendChild(playBtn);
+    background.appendChild(gameTitle);
     background.appendChild(modal);
     body.appendChild(background);
 
