@@ -44,6 +44,7 @@ h1 {
   h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 2rem;
   }
 
   form {
@@ -66,6 +67,7 @@ h1 {
       }
 
       input {
+        padding: 3px;
         border: 1px #8d8bd1 solid;
         border-radius: 4px;
         background: transparent;
@@ -88,6 +90,19 @@ h1 {
       background-color: #4944ff;
       color: #ffffff;
       font-weight: 500;
+      transition: scale 0.3s;
+    }
+
+    button:hover,
+    button:focus {
+      transition-duration: 0.3s;
+      scale: 1.05;
+      outline: none;
+    }
+
+    button:active {
+      transition-duration: 0.2s;
+      scale: 0.9;
     }
 
   }
