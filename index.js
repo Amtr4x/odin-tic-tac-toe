@@ -49,9 +49,10 @@ function createGameBoard() {
     firstPlayerContainer.appendChild(firstPlayerInput);
     secondPlayerContainer.appendChild(secondPlayerLabel);
     secondPlayerContainer.appendChild(secondPlayerInput);
-    background.appendChild(firstPlayerContainer);
-    background.appendChild(secondPlayerContainer);
-    background.appendChild(playBtn);
+    modal.appendChild(firstPlayerContainer);
+    modal.appendChild(secondPlayerContainer);
+    modal.appendChild(playBtn);
+    background.appendChild(modal);
     body.appendChild(background);
 
     playBtn.addEventListener("click", (btn) => {
@@ -139,3 +140,6 @@ function createGameBoard() {
   };
   return { getWinner, fillCell, getPlayersName };
 }
+
+const gameBoard = createGameBoard();
+gameBoard.getPlayersName();
