@@ -137,9 +137,5 @@ function createGameBoard() {
       return winner || "";
     }
   };
-  // TODO -> link file to html and test modal
   return { getWinner, fillCell, getPlayersName };
 }
-
-const gameBoard = createGameBoard();
-gameBoard.getPlayersName();
