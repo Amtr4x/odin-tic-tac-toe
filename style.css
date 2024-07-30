@@ -1,7 +1,6 @@
 body {
   height: 100dvh;
   padding: 20px;
-  border: #ff0000 3px solid;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,5 +31,59 @@ h1 {
     .cell {
       border: #222222 2px solid;
     }
+  }
+}
+
+#modal-background {
+  position: absolute;
+  background-color: #ffffff;
+  width: 100dvw;
+  height: 100dvh;
+  align-content: center;
+
+  form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 4px;
+    box-shadow: #c3c3c3 4px 4px 10px;
+
+    .player_container {
+      display: inherit;
+      gap: 20px;
+      justify-content: space-around;
+
+      label {
+        font-weight: 600;
+      }
+
+      input {
+        border: 1px #8d8bd1 solid;
+        border-radius: 4px;
+        background: transparent;
+      }
+
+      input:focus-visible,
+      input:hover {
+        outline-width: 1px;
+        outline-color: #4944ff;
+      }
+
+    }
+
+    button {
+      margin: auto;
+      width: 80px;
+      height: 30px;
+      border-radius: 4px;
+      border: none;
+      background-color: #4944ff;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
   }
 }
