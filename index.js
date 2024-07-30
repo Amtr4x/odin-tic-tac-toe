@@ -80,7 +80,7 @@ function createGameBoard() {
       return winner || "";
     }
   };
-  return { getWinner, fillCell };
+  return { getWinner, fillCell, isFirstPlayerTurn };
 }
 
 /**
@@ -147,6 +147,11 @@ function createDisplayManager() {
     });
   };
 
+  const updateTurn = (isFirstPlayerTurn) => {
+    const turnIndicator = document.querySelector("#turn-indicator");
+    turnIndicator.textContent = `Turn of ${isFirstPlayerTurn ? firstPlayer : secondPlayer}`;
+  }
+
   /**
   * Display a modal with the final result of the game
   * it should be X | O | drawn.
@@ -183,5 +188,10 @@ function createDisplayManager() {
     resetBtn.addEventListener("click", () => location.reload());
   }
 
-  return { getPlayersName, displayFinalResult };
+  return { getPlayersName, updateTurn, displayFinalResult };
 }
+
+const displayManager = createDisplayManager();
+displayManager.getPlayersName();
+
+const turnIndicator = document.querySelector("#turn-indicator");
