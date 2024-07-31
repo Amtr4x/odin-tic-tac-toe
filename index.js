@@ -7,11 +7,13 @@
  * @returns a gameBoard object with associated functions
  */
 function createGameBoard() {
-  let isFirstPlayerTurn = true;
+  let firstPlayerTurn = true;
   const gameBoard = [];
   gameBoard.length = 9;
   gameBoard.fill(null);
 
+  const getGameBoard = () => gameBoard;
+  const isFirstPlayerTurn = () => firstPlayerTurn;
 
   /**
    * Fill a required cell in the game board, automatically
@@ -21,13 +23,13 @@ function createGameBoard() {
    */
   const fillCell = (cell) => {
     if (!gameBoard[cell]) {
-      if (isFirstPlayerTurn) {
+      if (firstPlayerTurn) {
         gameBoard[cell] = "X";
-        isFirstPlayerTurn = !isFirstPlayerTurn;
       } else {
         gameBoard[cell] = "O";
-        isFirstPlayerTurn = !isFirstPlayerTurn;
       }
+
+      firstPlayerTurn = !firstPlayerTurn;
     }
   };
 
@@ -80,7 +82,7 @@ function createGameBoard() {
       return winner || "";
     }
   };
-  return { getWinner, fillCell, isFirstPlayerTurn };
+  return { getWinner, fillCell, isFirstPlayerTurn, getGameBoard };
 }
 
 /**
@@ -198,5 +200,11 @@ function createDisplayManager() {
 const gameBoard = createGameBoard();
 const displayManager = createDisplayManager();
 displayManager.getPlayersName();
-displayManager.updateTurn(gameBoard.isFirstPlayerTurn);
+displayManager.updateTurn(gameBoard.isFirstPlayerTurn());
 
+const board = document.querySelector(".game-board");
+board.addEventListener("click", (cell) => {
+  gameBoard.fillCell(cell.target.id);
+  cell.target.textContent = gameBoard.getGameBoard()[cell.target.id];
+  displayManager.updateTurn(gameBoard.isFirstPlayerTurn());
+});
