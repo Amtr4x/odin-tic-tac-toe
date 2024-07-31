@@ -38,7 +38,7 @@ function createGameBoard() {
    * @returns a bolean
    */
   const isGameCompleted = () => {
-    return gameBoard.includes(null);
+    return !gameBoard.includes(null);
   };
 
   /**
@@ -47,7 +47,7 @@ function createGameBoard() {
    * @returns a string containing the game result.
    */
   const getWinner = () => {
-    if (isGameCompleted) {
+    if (isGameCompleted()) {
       return "drawn";
     } else {
       let winner;
@@ -207,4 +207,8 @@ board.addEventListener("click", (cell) => {
   gameBoard.fillCell(cell.target.id);
   cell.target.textContent = gameBoard.getGameBoard()[cell.target.id];
   displayManager.updateTurn(gameBoard.isFirstPlayerTurn());
+
+  if (gameBoard.getWinner()) {
+    displayManager.displayFinalResult(gameBoard.getWinner());
+  }
 });
